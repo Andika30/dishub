@@ -76,6 +76,15 @@
     cursor: pointer; transition: var(--transition); white-space: nowrap;
   }
   .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(201,162,39,0.4); }
+  .nav-admin {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.15);
+    color: var(--gray); padding: 0.5rem 1rem;
+    border-radius: 8px; font-weight: 500; font-size: 0.78rem;
+    cursor: pointer; transition: var(--transition); white-space: nowrap;
+    text-decoration: none; display: inline-flex; align-items: center; gap: 0.35rem;
+  }
+  .nav-admin:hover { border-color: var(--gold); color: var(--gold); background: rgba(201,162,39,0.06); }
   .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
   .hamburger span { width: 24px; height: 2px; background: var(--gold); border-radius: 2px; transition: var(--transition); }
 
@@ -626,6 +635,7 @@
     <li><a href="#pengaduan">Pengaduan</a></li>
     <li><a href="#faq">FAQ</a></li>
   </ul>
+  <a href="login.html" class="nav-admin">🔐 Admin</a>
   <button class="nav-cta" onclick="scrollToSection('pengaduan')">📞 Hubungi Kami</button>
   <div class="hamburger" onclick="toggleMenu()" id="hamburger">
     <span></span><span></span><span></span>
@@ -962,23 +972,8 @@
         </div>
         <div class="download-box fade-in">
           <div class="download-title">📥 Download Formulir & Dokumen</div>
-          <div class="download-list">
-            <div class="download-item" onclick="fakeDownload('Formulir Permohonan Izin Angkutan Orang')">
-              <div class="download-item-left"><span class="file-icon">📄</span><div><div class="file-name">Formulir Permohonan</div><div class="file-size">PDF • 245 KB</div></div></div>
-              <button class="dl-btn">⬇ Unduh</button>
-            </div>
-            <div class="download-item" onclick="fakeDownload('Surat Pernyataan Kesanggupan')">
-              <div class="download-item-left"><span class="file-icon">📋</span><div><div class="file-name">Surat Pernyataan Kesanggupan</div><div class="file-size">DOCX • 78 KB</div></div></div>
-              <button class="dl-btn">⬇ Unduh</button>
-            </div>
-            <div class="download-item" onclick="fakeDownload('Checklist Persyaratan Angkutan Orang')">
-              <div class="download-item-left"><span class="file-icon">✅</span><div><div class="file-name">Checklist Persyaratan</div><div class="file-size">PDF • 120 KB</div></div></div>
-              <button class="dl-btn">⬇ Unduh</button>
-            </div>
-            <div class="download-item" onclick="fakeDownload('Panduan Lengkap Perizinan')">
-              <div class="download-item-left"><span class="file-icon">📘</span><div><div class="file-name">Panduan Perizinan Lengkap</div><div class="file-size">PDF • 1.2 MB</div></div></div>
-              <button class="dl-btn">⬇ Unduh</button>
-            </div>
+          <div class="download-list" id="dl-angkutan-orang">
+            <div style="font-size:0.8rem;color:var(--gray);padding:0.5rem 0;">⏳ Memuat...</div>
           </div>
         </div>
       </div>
@@ -994,15 +989,8 @@
         </div>
         <div class="download-box fade-in">
           <div class="download-title">📥 Formulir Angkutan Barang</div>
-          <div class="download-list">
-            <div class="download-item" onclick="fakeDownload('Formulir Izin Angkutan Barang')">
-              <div class="download-item-left"><span class="file-icon">📄</span><div><div class="file-name">Formulir Izin Angkutan Barang</div><div class="file-size">PDF • 210 KB</div></div></div>
-              <button class="dl-btn">⬇ Unduh</button>
-            </div>
-            <div class="download-item" onclick="fakeDownload('Checklist Persyaratan Angkutan Barang')">
-              <div class="download-item-left"><span class="file-icon">✅</span><div><div class="file-name">Checklist Persyaratan</div><div class="file-size">PDF • 95 KB</div></div></div>
-              <button class="dl-btn">⬇ Unduh</button>
-            </div>
+          <div class="download-list" id="dl-angkutan-barang">
+            <div style="font-size:0.8rem;color:var(--gray);padding:0.5rem 0;">⏳ Memuat...</div>
           </div>
         </div>
       </div>
@@ -1017,11 +1005,8 @@
         </div>
         <div class="download-box fade-in">
           <div class="download-title">📥 Formulir Izin Parkir</div>
-          <div class="download-list">
-            <div class="download-item" onclick="fakeDownload('Formulir Permohonan Izin Parkir')">
-              <div class="download-item-left"><span class="file-icon">📄</span><div><div class="file-name">Formulir Permohonan Parkir</div><div class="file-size">PDF • 180 KB</div></div></div>
-              <button class="dl-btn">⬇ Unduh</button>
-            </div>
+          <div class="download-list" id="dl-parkir">
+            <div style="font-size:0.8rem;color:var(--gray);padding:0.5rem 0;">⏳ Memuat...</div>
           </div>
         </div>
       </div>
@@ -1036,11 +1021,8 @@
         </div>
         <div class="download-box fade-in">
           <div class="download-title">📥 Formulir Andalalin</div>
-          <div class="download-list">
-            <div class="download-item" onclick="fakeDownload('Formulir Andalalin')">
-              <div class="download-item-left"><span class="file-icon">📄</span><div><div class="file-name">Template Dokumen Andalalin</div><div class="file-size">DOCX • 450 KB</div></div></div>
-              <button class="dl-btn">⬇ Unduh</button>
-            </div>
+          <div class="download-list" id="dl-andalalin">
+            <div style="font-size:0.8rem;color:var(--gray);padding:0.5rem 0;">⏳ Memuat...</div>
           </div>
         </div>
       </div>
@@ -1055,11 +1037,8 @@
         </div>
         <div class="download-box fade-in">
           <div class="download-title">📥 Formulir Izin Penggunaan Jalan</div>
-          <div class="download-list">
-            <div class="download-item" onclick="fakeDownload('Formulir Izin Penggunaan Jalan')">
-              <div class="download-item-left"><span class="file-icon">📄</span><div><div class="file-name">Formulir Izin Penggunaan Jalan</div><div class="file-size">PDF • 165 KB</div></div></div>
-              <button class="dl-btn">⬇ Unduh</button>
-            </div>
+          <div class="download-list" id="dl-ijin-jalan">
+            <div style="font-size:0.8rem;color:var(--gray);padding:0.5rem 0;">⏳ Memuat...</div>
           </div>
         </div>
       </div>
@@ -1078,56 +1057,14 @@
     <div class="info-grid">
       <div class="fade-in">
         <div style="font-size:0.82rem; font-weight:700; color:var(--teal); letter-spacing:0.05em; margin-bottom:1rem;">🚧 REKAYASA LALU LINTAS AKTIF</div>
-        <div class="rekayasa-grid">
-          <div class="rekayasa-card urgent">
-            <div class="rekayasa-header">
-              <div class="rekayasa-title">Penutupan Jl. Merdeka Barat</div>
-              <span class="rekayasa-tag tag-urgent">🔴 MENDESAK</span>
-            </div>
-            <div class="rekayasa-desc">Penutupan sementara untuk pekerjaan perbaikan jembatan. Kendaraan dialihkan via Jl. Diponegoro dan Jl. Imam Bonjol.</div>
-            <div class="rekayasa-meta">📅 Berlaku: 05–25 Mar 2026 | 06:00–22:00 WIB</div>
-          </div>
-          <div class="rekayasa-card info">
-            <div class="rekayasa-header">
-              <div class="rekayasa-title">Penyesuaian Sinyal Simpang Pemuda</div>
-              <span class="rekayasa-tag tag-info">🔵 INFO</span>
-            </div>
-            <div class="rekayasa-desc">Optimalisasi siklus lampu lalu lintas simpang Jl. Pemuda – Jl. Cokroaminoto. Diharapkan dapat mengurangi antrian hingga 40%.</div>
-            <div class="rekayasa-meta">📅 Berlaku mulai: 1 Mar 2026 | Permanen</div>
-          </div>
-          <div class="rekayasa-card normal">
-            <div class="rekayasa-header">
-              <div class="rekayasa-title">Penambahan Zebra Cross Jl. Sudirman</div>
-              <span class="rekayasa-tag tag-normal">🟢 NORMAL</span>
-            </div>
-            <div class="rekayasa-desc">Pemasangan zebra cross baru di 3 titik sepanjang Jl. Sudirman dalam rangka peningkatan keselamatan pejalan kaki.</div>
-            <div class="rekayasa-meta">📅 Selesai: 28 Feb 2026 | Berlaku permanen</div>
-          </div>
+        <div class="rekayasa-grid" id="rekayasaGrid">
+          <div style="font-size:0.8rem;color:var(--gray);padding:1rem 0;">⏳ Memuat data...</div>
         </div>
       </div>
       <div class="fade-in">
         <div style="font-size:0.82rem; font-weight:700; color:var(--gold); letter-spacing:0.05em; margin-bottom:1rem;">📢 PENGUMUMAN TERBARU</div>
-        <div class="pengumuman-list">
-          <div class="pengumuman-item">
-            <div class="pengumuman-date">07 MAR 2026</div>
-            <div class="pengumuman-title">Pembukaan Pendaftaran Uji Kompetensi Pengemudi Angkutan Umum 2026</div>
-          </div>
-          <div class="pengumuman-item">
-            <div class="pengumuman-date">03 MAR 2026</div>
-            <div class="pengumuman-title">Sosialisasi Kebijakan Baru Angkutan Online dan Kemitraan</div>
-          </div>
-          <div class="pengumuman-item">
-            <div class="pengumuman-date">28 FEB 2026</div>
-            <div class="pengumuman-title">Razia Gabungan Kendaraan Tidak Laik Jalan — Operasi Cipkon</div>
-          </div>
-          <div class="pengumuman-item">
-            <div class="pengumuman-date">20 FEB 2026</div>
-            <div class="pengumuman-title">Hasil Audit Keselamatan Jalan Nasional Triwulan I 2026</div>
-          </div>
-          <div class="pengumuman-item">
-            <div class="pengumuman-date">10 FEB 2026</div>
-            <div class="pengumuman-title">Perubahan Jam Operasional Trayek Bus Kota Perkotaan</div>
-          </div>
+        <div class="pengumuman-list" id="pengumumanList">
+          <div style="font-size:0.8rem;color:var(--gray);padding:1rem 0;">⏳ Memuat data...</div>
         </div>
       </div>
     </div>
@@ -1182,6 +1119,19 @@
           <textarea class="form-textarea" placeholder="Deskripsikan pengaduan Anda secara detail..." id="aduanTextarea"></textarea>
         </div>
         <button class="submit-btn" onclick="submitPengaduan()">📤 Kirim Pengaduan</button>
+      </div>
+      <!-- CEK STATUS TIKET -->
+      <div class="form-card fade-in" style="margin-top:1.5rem;">
+        <div class="form-title">🔍 Cek Status Pengaduan</div>
+        <div style="font-size:0.82rem;color:var(--gray);margin-bottom:1rem;">Masukkan nomor tiket yang diterima saat mengirim pengaduan untuk mengecek status penanganan.</div>
+        <div class="form-row">
+          <div class="form-group" style="flex:1;">
+            <label class="form-label">NOMOR TIKET</label>
+            <input type="text" class="form-input" placeholder="Contoh: TKT-2026-048" id="cekTiketInput" style="text-transform:uppercase;">
+          </div>
+        </div>
+        <button class="submit-btn" style="margin-top:0.5rem;" onclick="cekStatus()">🔍 Cek Status</button>
+        <div id="statusResult" style="display:none;margin-top:1rem;"></div>
       </div>
       <div class="fade-in">
         <div style="font-size:0.82rem; font-weight:700; color:var(--gray); letter-spacing:0.05em; margin-bottom:1.2rem;">SALURAN PENGADUAN</div>
@@ -1412,28 +1362,197 @@
     setTimeout(() => t.classList.remove('show'), 3500);
   }
 
-  // FAKE DOWNLOAD
-  function fakeDownload(name) {
+  // ===== LOAD DATA REAL DARI SERVER =====
+  const KATEGORI_MAP = {
+    'Angkutan Orang':  'dl-angkutan-orang',
+    'Angkutan Barang': 'dl-angkutan-barang',
+    'Parkir':          'dl-parkir',
+    'Andalalin':       'dl-andalalin',
+    'Izin Jalan':      'dl-ijin-jalan',
+  };
+
+  function renderDownloadList(containerId, files) {
+    const el = document.getElementById(containerId);
+    if (!el) return;
+    if (!files || files.length === 0) {
+      el.innerHTML = '<div style="font-size:0.8rem;color:var(--gray);padding:0.5rem 0;">Belum ada file tersedia.</div>';
+      return;
+    }
+    el.innerHTML = files.map(f => `
+      <div class="download-item" onclick="fakeDownload('${f.nama.replace(/'/g,"\\'")}')">
+        <div class="download-item-left">
+          <span class="file-icon">${f.icon||'📄'}</span>
+          <div><div class="file-name">${f.nama}</div><div class="file-size">${f.tipe} • ${f.ukuran}</div></div>
+        </div>
+        <button class="dl-btn">⬇ Unduh</button>
+      </div>`).join('');
+  }
+
+  async function loadPublicData() {
+    try {
+      const [rekayasa, pengumuman, files] = await Promise.all([
+        fetch('/api/rekayasa').then(r => r.json()),
+        fetch('/api/pengumuman').then(r => r.json()),
+        fetch('/api/files').then(r => r.json()),
+      ]);
+
+      // Render rekayasa
+      const rgEl = document.getElementById('rekayasaGrid');
+      if (rgEl) {
+        if (!rekayasa.length) {
+          rgEl.innerHTML = '<div style="font-size:0.8rem;color:var(--gray);">Tidak ada rekayasa lalu lintas aktif.</div>';
+        } else {
+          const tipeLabel = {urgent:'🔴 MENDESAK', info:'🔵 INFO', normal:'🟢 NORMAL'};
+          const tipeCls   = {urgent:'tag-urgent', info:'tag-info', normal:'tag-normal'};
+          rgEl.innerHTML  = rekayasa.map(r => {
+            const meta = r.mulai ? `📅 ${r.mulai}${r.selesai ? ' – ' + r.selesai : ''} | ${r.jam||''}` : (r.jam||'');
+            return `<div class="rekayasa-card ${r.tipe||'normal'}">
+              <div class="rekayasa-header">
+                <div class="rekayasa-title">${r.judul}</div>
+                <span class="rekayasa-tag ${tipeCls[r.tipe]||'tag-normal'}">${tipeLabel[r.tipe]||r.tipe}</span>
+              </div>
+              <div class="rekayasa-desc">${r.deskripsi}</div>
+              <div class="rekayasa-meta">${meta}</div>
+            </div>`;
+          }).join('');
+        }
+      }
+
+      // Render pengumuman
+      const pgEl = document.getElementById('pengumumanList');
+      if (pgEl) {
+        if (!pengumuman.length) {
+          pgEl.innerHTML = '<div style="font-size:0.8rem;color:var(--gray);">Belum ada pengumuman.</div>';
+        } else {
+          pgEl.innerHTML = pengumuman.slice(0, 5).map(p => {
+            const tgl = p.tanggal
+              ? new Date(p.tanggal).toLocaleDateString('id-ID',{day:'2-digit',month:'short',year:'numeric'}).toUpperCase()
+              : p.tanggal;
+            return `<div class="pengumuman-item">
+              <div class="pengumuman-date">${tgl}</div>
+              <div class="pengumuman-title">${p.judul}</div>
+            </div>`;
+          }).join('');
+        }
+      }
+
+      // Render downloads per kategori
+      Object.entries(KATEGORI_MAP).forEach(([kat, id]) => {
+        renderDownloadList(id, files.filter(f => f.kategori === kat));
+      });
+
+    } catch(e) {
+      // Server tidak berjalan — tampilkan pesan minimal
+      const rgEl = document.getElementById('rekayasaGrid');
+      if (rgEl) rgEl.innerHTML = '<div style="font-size:0.8rem;color:var(--gray);">Data tidak tersedia (server offline).</div>';
+      const pgEl = document.getElementById('pengumumanList');
+      if (pgEl) pgEl.innerHTML = '<div style="font-size:0.8rem;color:var(--gray);">Data tidak tersedia (server offline).</div>';
+      Object.values(KATEGORI_MAP).forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.innerHTML = '<div style="font-size:0.8rem;color:var(--gray);">Data tidak tersedia.</div>';
+      });
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', loadPublicData);
+
+  // FAKE DOWNLOAD — cek server untuk URL asli
+  async function fakeDownload(name) {
+    try {
+      const files = await fetch('/api/files').then(r => r.json());
+      const found = files.find(f => f.nama === name);
+      if (found && found.url) { window.open(found.url, '_blank'); return; }
+    } catch(e) {}
     showToast('✅ Mengunduh: ' + name + '...', 'var(--teal-dark)');
   }
 
-  // SUBMIT PENGADUAN
-  function submitPengaduan() {
-    const nama = document.getElementById('namaInput').value.trim();
-    const hp = document.getElementById('hpInput').value.trim();
+  // SUBMIT PENGADUAN — kirim ke server
+  async function submitPengaduan() {
+    const nama     = document.getElementById('namaInput').value.trim();
+    const hp       = document.getElementById('hpInput').value.trim();
+    const email    = document.getElementById('emailInput').value.trim();
     const kategori = document.getElementById('kategoriSelect').value;
-    const aduan = document.getElementById('aduanTextarea').value.trim();
+    const lokasi   = document.getElementById('lokasiInput').value.trim();
+    const aduan    = document.getElementById('aduanTextarea').value.trim();
+
     if (!nama || !hp || !kategori || !aduan) {
       showToast('⚠️ Mohon lengkapi semua field wajib (*)', '#e63946');
       return;
     }
-    showToast('✅ Pengaduan berhasil dikirim! Kami akan merespons dalam 3 hari kerja.');
-    document.getElementById('namaInput').value = '';
-    document.getElementById('hpInput').value = '';
-    document.getElementById('emailInput').value = '';
-    document.getElementById('kategoriSelect').value = '';
-    document.getElementById('lokasiInput').value = '';
-    document.getElementById('aduanTextarea').value = '';
+
+    // Format tanggal
+    const now     = new Date();
+    const bulan   = ['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agt','Sep','Okt','Nov','Des'];
+    const tanggal = `${String(now.getDate()).padStart(2,'0')} ${bulan[now.getMonth()]} ${now.getFullYear()}`;
+
+    const newEntry = {
+      tanggal, nama, hp, email, kategori,
+      lokasi, uraian: aduan, prioritas: 'Sedang', status: 'Baru', catatan: ''
+    };
+
+    try {
+      const res      = await fetch('/api/pengaduan', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newEntry)
+      });
+      const result   = await res.json();
+      const ticketId = result.id || '?';
+
+      // Tampilkan sukses dengan nomor tiket
+      const t = document.getElementById('toast');
+      t.style.background = 'var(--green)';
+      t.innerHTML = `✅ Pengaduan berhasil dikirim!<br><span style="font-family:monospace;font-size:0.9em;">No. Tiket: <strong>${ticketId}</strong></span><br><small>Simpan nomor ini untuk cek status.</small>`;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 5000);
+
+      // Reset form
+      ['namaInput','hpInput','emailInput','lokasiInput'].forEach(id => document.getElementById(id).value = '');
+      document.getElementById('kategoriSelect').value = '';
+      document.getElementById('aduanTextarea').value  = '';
+
+      // Auto-isi kolom cek status
+      const cekInput = document.getElementById('cekTiketInput');
+      if (cekInput) { cekInput.value = ticketId; }
+    } catch(e) {
+      showToast('⚠️ Gagal mengirim pengaduan. Pastikan server berjalan.', '#e63946');
+    }
+  }
+
+  // CEK STATUS TIKET
+  async function cekStatus() {
+    const id = (document.getElementById('cekTiketInput').value || '').trim().toUpperCase();
+    if (!id) { showToast('⚠️ Masukkan nomor tiket', '#e63946'); return; }
+
+    const result = document.getElementById('statusResult');
+    result.style.display = 'block';
+    result.innerHTML = '<div style="font-size:0.85rem;color:var(--gray);text-align:center;padding:1rem;">⏳ Mencari tiket...</div>';
+
+    try {
+      const pengaduan = await fetch('/api/pengaduan').then(r => r.json());
+      const tiket     = pengaduan.find(d => d.id === id);
+
+      if (!tiket) {
+        result.innerHTML = `<div style="background:rgba(230,57,70,0.1);border:1px solid rgba(230,57,70,0.3);border-radius:10px;padding:1rem;font-size:0.85rem;color:var(--red);">❌ Nomor tiket <strong>${id}</strong> tidak ditemukan. Pastikan nomor tiket Anda benar.</div>`;
+        return;
+      }
+
+      const stColor = {Baru:'var(--teal)',Diproses:'var(--gold)',Selesai:'var(--green)',Ditolak:'var(--red)'};
+      const color   = stColor[tiket.status] || 'var(--gray)';
+      result.innerHTML = `
+        <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:1.2rem;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.8rem;flex-wrap:wrap;gap:0.5rem;">
+            <div style="font-family:'DM Mono',monospace;font-size:0.88rem;color:var(--gold);">${tiket.id}</div>
+            <div style="padding:0.3rem 0.9rem;border-radius:100px;background:${color}22;color:${color};font-size:0.78rem;font-weight:700;">${tiket.status}</div>
+          </div>
+          <div style="font-size:0.85rem;font-weight:600;margin-bottom:0.3rem;">${tiket.kategori}</div>
+          <div style="font-size:0.78rem;color:var(--gray);margin-bottom:0.6rem;line-height:1.5;">${tiket.uraian.substring(0,120)}${tiket.uraian.length>120?'...':''}</div>
+          <div style="font-size:0.72rem;color:var(--gray);">📅 Tanggal masuk: ${tiket.tanggal}</div>
+          ${tiket.catatan ? `<div style="margin-top:0.8rem;padding:0.8rem;background:rgba(42,157,143,0.08);border:1px solid rgba(42,157,143,0.2);border-radius:8px;font-size:0.78rem;line-height:1.5;"><strong style="color:var(--green);">📝 Catatan Penanganan:</strong><br>${tiket.catatan}</div>` : ''}
+        </div>`;
+    } catch(e) {
+      result.innerHTML = '<div style="background:rgba(230,57,70,0.1);border:1px solid rgba(230,57,70,0.3);border-radius:10px;padding:1rem;font-size:0.85rem;color:var(--red);">⚠️ Gagal menghubungi server. Pastikan server Node.js berjalan.</div>';
+    }
   }
 </script>
 </body>
